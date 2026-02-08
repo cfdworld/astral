@@ -18,23 +18,24 @@ const ServerModSchema = CollectionSchema(
   id: 3724355831027954292,
   properties: {
     r'enable': PropertySchema(id: 0, name: r'enable', type: IsarType.bool),
-    r'http': PropertySchema(id: 1, name: r'http', type: IsarType.bool),
-    r'https': PropertySchema(id: 2, name: r'https', type: IsarType.bool),
-    r'name': PropertySchema(id: 3, name: r'name', type: IsarType.string),
-    r'quic': PropertySchema(id: 4, name: r'quic', type: IsarType.bool),
+    r'faketcp': PropertySchema(id: 1, name: r'faketcp', type: IsarType.bool),
+    r'http': PropertySchema(id: 2, name: r'http', type: IsarType.bool),
+    r'https': PropertySchema(id: 3, name: r'https', type: IsarType.bool),
+    r'name': PropertySchema(id: 4, name: r'name', type: IsarType.string),
+    r'quic': PropertySchema(id: 5, name: r'quic', type: IsarType.bool),
     r'sortOrder': PropertySchema(
-      id: 5,
+      id: 6,
       name: r'sortOrder',
       type: IsarType.long,
     ),
-    r'srv': PropertySchema(id: 6, name: r'srv', type: IsarType.bool),
-    r'tcp': PropertySchema(id: 7, name: r'tcp', type: IsarType.bool),
-    r'txt': PropertySchema(id: 8, name: r'txt', type: IsarType.bool),
-    r'udp': PropertySchema(id: 9, name: r'udp', type: IsarType.bool),
-    r'url': PropertySchema(id: 10, name: r'url', type: IsarType.string),
-    r'wg': PropertySchema(id: 11, name: r'wg', type: IsarType.bool),
-    r'ws': PropertySchema(id: 12, name: r'ws', type: IsarType.bool),
-    r'wss': PropertySchema(id: 13, name: r'wss', type: IsarType.bool),
+    r'srv': PropertySchema(id: 7, name: r'srv', type: IsarType.bool),
+    r'tcp': PropertySchema(id: 8, name: r'tcp', type: IsarType.bool),
+    r'txt': PropertySchema(id: 9, name: r'txt', type: IsarType.bool),
+    r'udp': PropertySchema(id: 10, name: r'udp', type: IsarType.bool),
+    r'url': PropertySchema(id: 11, name: r'url', type: IsarType.string),
+    r'wg': PropertySchema(id: 12, name: r'wg', type: IsarType.bool),
+    r'ws': PropertySchema(id: 13, name: r'ws', type: IsarType.bool),
+    r'wss': PropertySchema(id: 14, name: r'wss', type: IsarType.bool),
   },
 
   estimateSize: _serverModEstimateSize,
@@ -70,19 +71,20 @@ void _serverModSerialize(
   Map<Type, List<int>> allOffsets,
 ) {
   writer.writeBool(offsets[0], object.enable);
-  writer.writeBool(offsets[1], object.http);
-  writer.writeBool(offsets[2], object.https);
-  writer.writeString(offsets[3], object.name);
-  writer.writeBool(offsets[4], object.quic);
-  writer.writeLong(offsets[5], object.sortOrder);
-  writer.writeBool(offsets[6], object.srv);
-  writer.writeBool(offsets[7], object.tcp);
-  writer.writeBool(offsets[8], object.txt);
-  writer.writeBool(offsets[9], object.udp);
-  writer.writeString(offsets[10], object.url);
-  writer.writeBool(offsets[11], object.wg);
-  writer.writeBool(offsets[12], object.ws);
-  writer.writeBool(offsets[13], object.wss);
+  writer.writeBool(offsets[1], object.faketcp);
+  writer.writeBool(offsets[2], object.http);
+  writer.writeBool(offsets[3], object.https);
+  writer.writeString(offsets[4], object.name);
+  writer.writeBool(offsets[5], object.quic);
+  writer.writeLong(offsets[6], object.sortOrder);
+  writer.writeBool(offsets[7], object.srv);
+  writer.writeBool(offsets[8], object.tcp);
+  writer.writeBool(offsets[9], object.txt);
+  writer.writeBool(offsets[10], object.udp);
+  writer.writeString(offsets[11], object.url);
+  writer.writeBool(offsets[12], object.wg);
+  writer.writeBool(offsets[13], object.ws);
+  writer.writeBool(offsets[14], object.wss);
 }
 
 ServerMod _serverModDeserialize(
@@ -93,20 +95,21 @@ ServerMod _serverModDeserialize(
 ) {
   final object = ServerMod(
     enable: reader.readBoolOrNull(offsets[0]) ?? false,
-    http: reader.readBoolOrNull(offsets[1]) ?? false,
-    https: reader.readBoolOrNull(offsets[2]) ?? false,
+    faketcp: reader.readBoolOrNull(offsets[1]) ?? false,
+    http: reader.readBoolOrNull(offsets[2]) ?? false,
+    https: reader.readBoolOrNull(offsets[3]) ?? false,
     id: id,
-    name: reader.readString(offsets[3]),
-    quic: reader.readBoolOrNull(offsets[4]) ?? false,
-    sortOrder: reader.readLongOrNull(offsets[5]) ?? 0,
-    srv: reader.readBoolOrNull(offsets[6]) ?? false,
-    tcp: reader.readBoolOrNull(offsets[7]) ?? false,
-    txt: reader.readBoolOrNull(offsets[8]) ?? false,
-    udp: reader.readBoolOrNull(offsets[9]) ?? false,
-    url: reader.readString(offsets[10]),
-    wg: reader.readBoolOrNull(offsets[11]) ?? false,
-    ws: reader.readBoolOrNull(offsets[12]) ?? false,
-    wss: reader.readBoolOrNull(offsets[13]) ?? false,
+    name: reader.readString(offsets[4]),
+    quic: reader.readBoolOrNull(offsets[5]) ?? false,
+    sortOrder: reader.readLongOrNull(offsets[6]) ?? 0,
+    srv: reader.readBoolOrNull(offsets[7]) ?? false,
+    tcp: reader.readBoolOrNull(offsets[8]) ?? false,
+    txt: reader.readBoolOrNull(offsets[9]) ?? false,
+    udp: reader.readBoolOrNull(offsets[10]) ?? false,
+    url: reader.readString(offsets[11]),
+    wg: reader.readBoolOrNull(offsets[12]) ?? false,
+    ws: reader.readBoolOrNull(offsets[13]) ?? false,
+    wss: reader.readBoolOrNull(offsets[14]) ?? false,
   );
   return object;
 }
@@ -125,13 +128,13 @@ P _serverModDeserializeProp<P>(
     case 2:
       return (reader.readBoolOrNull(offset) ?? false) as P;
     case 3:
-      return (reader.readString(offset)) as P;
+      return (reader.readBoolOrNull(offset) ?? false) as P;
     case 4:
-      return (reader.readBoolOrNull(offset) ?? false) as P;
+      return (reader.readString(offset)) as P;
     case 5:
-      return (reader.readLongOrNull(offset) ?? 0) as P;
-    case 6:
       return (reader.readBoolOrNull(offset) ?? false) as P;
+    case 6:
+      return (reader.readLongOrNull(offset) ?? 0) as P;
     case 7:
       return (reader.readBoolOrNull(offset) ?? false) as P;
     case 8:
@@ -139,12 +142,14 @@ P _serverModDeserializeProp<P>(
     case 9:
       return (reader.readBoolOrNull(offset) ?? false) as P;
     case 10:
-      return (reader.readString(offset)) as P;
-    case 11:
       return (reader.readBoolOrNull(offset) ?? false) as P;
+    case 11:
+      return (reader.readString(offset)) as P;
     case 12:
       return (reader.readBoolOrNull(offset) ?? false) as P;
     case 13:
+      return (reader.readBoolOrNull(offset) ?? false) as P;
+    case 14:
       return (reader.readBoolOrNull(offset) ?? false) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -251,6 +256,16 @@ extension ServerModQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         FilterCondition.equalTo(property: r'enable', value: value),
+      );
+    });
+  }
+
+  QueryBuilder<ServerMod, ServerMod, QAfterFilterCondition> faketcpEqualTo(
+    bool value,
+  ) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(
+        FilterCondition.equalTo(property: r'faketcp', value: value),
       );
     });
   }
@@ -783,6 +798,18 @@ extension ServerModQuerySortBy on QueryBuilder<ServerMod, ServerMod, QSortBy> {
     });
   }
 
+  QueryBuilder<ServerMod, ServerMod, QAfterSortBy> sortByFaketcp() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'faketcp', Sort.asc);
+    });
+  }
+
+  QueryBuilder<ServerMod, ServerMod, QAfterSortBy> sortByFaketcpDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'faketcp', Sort.desc);
+    });
+  }
+
   QueryBuilder<ServerMod, ServerMod, QAfterSortBy> sortByHttp() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'http', Sort.asc);
@@ -951,6 +978,18 @@ extension ServerModQuerySortThenBy
   QueryBuilder<ServerMod, ServerMod, QAfterSortBy> thenByEnableDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'enable', Sort.desc);
+    });
+  }
+
+  QueryBuilder<ServerMod, ServerMod, QAfterSortBy> thenByFaketcp() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'faketcp', Sort.asc);
+    });
+  }
+
+  QueryBuilder<ServerMod, ServerMod, QAfterSortBy> thenByFaketcpDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'faketcp', Sort.desc);
     });
   }
 
@@ -1131,6 +1170,12 @@ extension ServerModQueryWhereDistinct
     });
   }
 
+  QueryBuilder<ServerMod, ServerMod, QDistinct> distinctByFaketcp() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'faketcp');
+    });
+  }
+
   QueryBuilder<ServerMod, ServerMod, QDistinct> distinctByHttp() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'http');
@@ -1225,6 +1270,12 @@ extension ServerModQueryProperty
   QueryBuilder<ServerMod, bool, QQueryOperations> enableProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'enable');
+    });
+  }
+
+  QueryBuilder<ServerMod, bool, QQueryOperations> faketcpProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'faketcp');
     });
   }
 

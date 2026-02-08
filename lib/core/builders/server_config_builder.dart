@@ -67,6 +67,7 @@ class ServerConfigBuilder {
     final urls = <String>[];
     for (final server in servers) {
       if (server.tcp) urls.add('tcp://${server.url}');
+      if (server.faketcp) urls.add('faketcp://${server.url}');
       if (server.udp) urls.add('udp://${server.url}');
       if (server.ws) urls.add('ws://${server.url}');
       if (server.wss) urls.add('wss://${server.url}');

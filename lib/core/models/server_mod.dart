@@ -11,6 +11,7 @@ class ServerMod {
   bool enable = true;
   // tcp 开启
   bool tcp = true;
+  bool faketcp = false;
   // udp 开启
   bool udp = false;
   // ws 开启
@@ -40,6 +41,7 @@ class ServerMod {
     required this.name,
     required this.url,
     this.tcp = false,
+    this.faketcp = false,
     this.udp = false,
     this.ws = false,
     this.wss = false,

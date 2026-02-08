@@ -47,6 +47,7 @@ class _ServerDialogState extends State<ServerDialog> {
   final _urlController = TextEditingController();
 
   bool _tcp = true;
+  bool _faketcp = false;
   bool _udp = true;
   bool _ws = false;
   bool _wss = false;
@@ -67,6 +68,7 @@ class _ServerDialogState extends State<ServerDialog> {
       _urlController.text = widget.server!.url;
 
       _tcp = widget.server!.tcp;
+      _faketcp = widget.server!.faketcp;
       _udp = widget.server!.udp;
       _ws = widget.server!.ws;
       _wss = widget.server!.wss;
@@ -94,6 +96,7 @@ class _ServerDialogState extends State<ServerDialog> {
         name: _nameController.text,
         url: _urlController.text,
         tcp: _tcp,
+        faketcp: _faketcp,
         udp: _udp,
         ws: _ws,
         wss: _wss,
@@ -184,6 +187,11 @@ class _ServerDialogState extends State<ServerDialog> {
                     'TCP',
                     _tcp,
                     (value) => setState(() => _tcp = value!),
+                  ),
+                  _buildProtocolSwitch(
+                    'FAKETCP',
+                    _faketcp,
+                    (value) => setState(() => _faketcp = value!),
                   ),
                   _buildProtocolSwitch(
                     'UDP',

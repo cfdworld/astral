@@ -5,11 +5,11 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-/// Minecraft服务器信�?
+/// Minecraft服务器信�?
 class MinecraftServerInfo {
   final String host;
   final int port;
-  String? serverIcon; // Base64编码的图�?
+  String? serverIcon; // Base64编码的图�?
   String motd;
   int maxPlayers;
   int onlinePlayers;
@@ -32,7 +32,7 @@ class MinecraftServerInfo {
   });
 }
 
-/// Minecraft服务器卡片组�?
+/// Minecraft服务器卡片组�?
 class MinecraftServerCard extends StatefulWidget {
   final String host;
   final int port;
@@ -82,9 +82,8 @@ class _MinecraftServerCardState extends State<MinecraftServerCard> {
       if (!mounted) return;
       setState(() {
         _serverInfo.isLoading = false;
-        _serverInfo.motd = status.motd.isNotEmpty
-            ? status.motd
-            : 'Minecraft Server';
+        _serverInfo.motd =
+            status.motd.isNotEmpty ? status.motd : 'Minecraft Server';
         _serverInfo.version = status.version;
         _serverInfo.serverType = status.serverType;
         _serverInfo.protocol = status.protocol;
@@ -195,7 +194,7 @@ class _MinecraftServerCardState extends State<MinecraftServerCard> {
               padding: const EdgeInsets.all(16.0),
               child: Row(
                 children: [
-                  // 服务器图标（小的�?
+                  // 服务器图标（小的�?
                   Container(
                     width: 48,
                     height: 48,
@@ -210,13 +209,13 @@ class _MinecraftServerCardState extends State<MinecraftServerCard> {
                     child: _buildServerIcon(),
                   ),
                   const SizedBox(width: 12),
-                  // 服务器信�?
+                  // 服务器信�?
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        // 第一行：状�?+ 服务器类�?
+                        // 第一行：状�?+ 服务器类�?
                         Row(
                           children: [
                             Container(
@@ -296,7 +295,7 @@ class _MinecraftServerCardState extends State<MinecraftServerCard> {
                           overflow: TextOverflow.ellipsis,
                         ),
                         const SizedBox(height: 4),
-                        // 第三行：玩家�?
+                        // 第三行：玩家�?
                         Row(
                           children: [
                             Icon(
@@ -329,7 +328,7 @@ class _MinecraftServerCardState extends State<MinecraftServerCard> {
                   widget.isConnected
                       ? FilledButton.tonalIcon(
                         onPressed: () {
-                          print('尝试断开服务�? ${widget.host}:${widget.port}');
+                          print('尝试断开服务�? ${widget.host}:${widget.port}');
                           widget.onToggleConnection?.call(_serverInfo.motd);
                         },
                         icon: const Icon(Icons.stop, size: 20),
@@ -416,7 +415,6 @@ class _MinecraftServerCardState extends State<MinecraftServerCard> {
   }
 }
 
-
 class _McStatusResult {
   final String motd;
   final int maxPlayers;
@@ -447,12 +445,12 @@ class _SocketReader {
   bool _isDone = false;
 
   _SocketReader(this._socket)
-      : _subscription = _socket.listen(
-          null,
-          onError: null,
-          onDone: null,
-          cancelOnError: false,
-        ) {
+    : _subscription = _socket.listen(
+        null,
+        onError: null,
+        onDone: null,
+        cancelOnError: false,
+      ) {
     _subscription.onData((data) {
       _buffer.addAll(data);
       _dataWaiter?.complete();
@@ -495,7 +493,9 @@ class _SocketReader {
       await _dataWaiter!.future;
     }
     if (_buffer.length < length) {
-      throw const SocketException('Connection closed before response completed');
+      throw const SocketException(
+        'Connection closed before response completed',
+      );
     }
   }
 

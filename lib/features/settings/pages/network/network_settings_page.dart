@@ -51,6 +51,10 @@ class NetworkSettingsPage extends BaseSettingsPage {
                           child: Text('UDP', style: TextStyle(fontSize: 14)),
                         ),
                         DropdownMenuItem(
+                          value: 'faketcp',
+                          child: Text('FakeTCP', style: TextStyle(fontSize: 14)),
+                        ),
+                        DropdownMenuItem(
                           value: 'ws',
                           child: Text(
                             'WebSocket',

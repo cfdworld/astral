@@ -245,6 +245,7 @@ $roomSummary$shareOptions
         enabledServers.expand((s) {
           final urls = <String>[];
           if (s.tcp) urls.add('tcp://${s.url}');
+          if (s.faketcp) urls.add('faketcp://${s.url}');
           if (s.udp) urls.add('udp://${s.url}');
           if (s.ws) urls.add('ws://${s.url}');
           if (s.wss) urls.add('wss://${s.url}');
